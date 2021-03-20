@@ -18,5 +18,6 @@ describe('function checkBrackets shold check brackets config in string', () => {
     expect(checkBrackets('|[(())]|', [['(', ')'], ['[', ']'], ['|', '|']])).toBeTruthy();
     expect(checkBrackets('[]()([||])', [['(', ')'], ['[', ']'], ['|', '|']])).toBeTruthy();
     expect(checkBrackets('[]()(|])', [['(', ')'], ['[', ']'], ['|', '|']])).toBeFalsy();
+    expect(checkBrackets('[[()([||[][])', [['(', ')'], ['[', '['], ['|', '|']])).toBeFalsy();
   });
 });

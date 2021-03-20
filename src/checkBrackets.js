@@ -9,7 +9,15 @@ const checkBrackets = (str, config) => {
   );
 
   return configKeys.every(
-    (k) => calcQuantity(k, arrOfStr) === calcQuantity(mappedConfig.get(k), arrOfStr),
+    (openBracket) => {
+      const closeBracket = mappedConfig.get(openBracket);
+      const openQuantity = calcQuantity(openBracket, arrOfStr);
+      const closeQuantity = calcQuantity(closeBracket, arrOfStr); 
+      if (openBracket === closeBracket && openQuantity % 2 !== 0) {
+        return false;
+      }
+      return openQuantity === closeQuantity;
+    }
   );
 };
 
